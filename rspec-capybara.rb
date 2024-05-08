@@ -1,4 +1,3 @@
-# à lancer avec : rails new my_project -T -d postgresql --css=sass --javascript=webpack -m ../app-templates/rspec-capybara.rb
 gem_group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
@@ -131,10 +130,7 @@ end
 run "mkdir -p spec/system"
 
 create_file 'spec/system/mon_test.rb', <<-RUBY
-require 'spec_helper'
-require 'selenium-webdriver'
 require 'rails_helper'
-
 
 RSpec.describe 'Using Selenium' do
 
@@ -441,5 +437,6 @@ version.txt
 *.rdb
 GITIGNORE
 
+append_to_file '.rspec', '--format documentation'
 
 end

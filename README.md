@@ -34,7 +34,6 @@ Your containers are built, up and running.
 As you've got the volume, you can edit your project locally and see the changes in the container.
 You can go to the web container and run your tests.
 
-
 ## System Test Example
 
 Here is an example of a system test setup within this template. The Capybara driver is configured to use Selenium with mobile emulation:
@@ -63,7 +62,8 @@ Capybara is set up with several drivers including Chrome and headless Chrome opt
   * `:headless_chrome` for headless testing, ideal for CI environments.
   * `:selenium_mobile` uses mobile emulation for tests, using iPhone X as the device emulation model.
 
-### Selenium Configuration
+### Selenium/capybara webdriver Configuration
+
 ```ruby
 # spec/support/capybara.rb
 require 'selenium/webdriver'
@@ -95,3 +95,40 @@ Capybara.default_driver = :selenium_mobile
 ```
 
 This configuration ensures that your system tests can simulate user interactions as closely as possible to real-world scenarios.
+
+A noter pour le paramètrage du driver de capybara, c'est à dire le webdriver.
+
+Note for the configuration of the capybara driver, i.e. the webdriver.
+
+We use the chromium webdriver options (-> chrome (inherits from chromium)) from selenium.
+
+The options syntax is available in https://www.selenium.dev/selenium/docs/api/rb/Selenium/WebDriver/Chromium/Options.html#CAPABILITIES-constant
+
+and the available options themselves (like: add_argument, ie addArgument or add_emulation - addEmulation) are available at: https://www.selenium.dev/selenium/docs/api/rb/Selenium/WebDriver/Chromium/Options.html# CAPABILITIES-constant
+
+and the arguments of each option are accessible as for example for add_argument (addArgument):
+
+on the webdriver page https://chromedriver.chromium.org/mobile-emulation, which then directs to the chrome content
+
+On utilise les options du webdriver chromium (-> chrome (hérite de chromium)) de selenium.
+
+The options syntax is available in https://www.selenium.dev/selenium/docs/api/rb/Selenium/WebDriver/Chromium/Options.html#CAPABILITIES-constant
+
+and the available options themselves (like: add_argument, ie addArgument or add_emulation - addEmulation) are available at: https://www.selenium.dev/selenium/docs/api/rb/Selenium/WebDriver/Chromium/Options.html# CAPABILITIES-constant
+
+and the arguments of each option are accessible as for example for add_argument (addArgument):
+(Selenium::WebDriver::Chrome::Options.new).add_argument('--window-size=1680,1050')
+Or
+on the webdriver page https://chromedriver.chromium.org/mobile-emulation, which then directs to the chrome content:
+(Selenium::WebDriver::Chrome::Options.new).add_emulation(device_name: 'iPhone X')
+
+![](assets/20240508_124117_image.png)
+
+The way to progress through the documentation for driver setup is:
+![alt text](image.png)
+
+
+and just as a reminder for a classic rspec system test with capybara:
+
+
+![](assets/20240508_153552_image.png)
