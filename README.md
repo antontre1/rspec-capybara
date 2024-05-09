@@ -127,8 +127,6 @@ on the webdriver page https://chromedriver.chromium.org/mobile-emulation, which 
 The way to progress through the documentation for driver setup is:
 ![alt text](image.png)
 
-
 and just as a reminder for a classic rspec system test with capybara:
 
-
-![](assets/20240508_153552_image.png)
+![](assets/20240509_081911_image.png)

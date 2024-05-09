@@ -133,10 +133,14 @@ create_file 'spec/system/mon_test.rb', <<-RUBY
 require 'rails_helper'
 
 RSpec.describe 'Using Selenium' do
+  before do
+    visit posts_path
+  end
 
-  it 'go to posts' do
-   visit posts_path
-   save_screenshot('postspage.png')
+  it 'goes to posts' do
+    expect(page).to have_current_path('/posts')
+    expect(page).to have_link('New post', href: '/posts/new')
+    save_screenshot('postspage.png')
   end
 end
 
